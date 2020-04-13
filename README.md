@@ -6,7 +6,7 @@ rasa is open source conversational AI Bot with Natural Langauge Understaning
 rasa x helps for UI
 
 ## Installation
-use https://rasa.com/docs/rasa/user-guide/installation/
+use [rasa](https://rasa.com/docs/rasa/user-guide/installation/)
 
 ```bash
 pip install rasa
@@ -16,9 +16,9 @@ pip install rasa x or use pip install rasa-x -U --extra-index-url https://pypi.r
 ```
 ## Path
 After Installtion follow path as 
-    nlu.md(for defining intents)
-    stories.md(defining path for user answers )
-    domain.yml(user answers in detail)
+nlu.md(for defining intents)
+stories.md(defining path for user answers )
+domain.yml(user answers in detail)
 ## Commands 
  rasa train (for training model)
  rass shell (comand interface provider between user and bot)
