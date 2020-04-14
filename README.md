@@ -1,5 +1,5 @@
 # rasa_nlu
-created a basic chatbot in rasa nlu
+created a basic chatbot in rasa nlu for covid 19 
 # About rasa 
 
 rasa is open source conversational AI Bot with Natural Langauge Understaning
