@@ -16,12 +16,19 @@ pip install rasa x or use pip install rasa-x -U --extra-index-url https://pypi.r
 ```
 ## Path
 After Installtion follow path as.
+
 nlu.md(for defining intents).
+
 stories.md(defining path for user answers ).
+
 domain.yml(user answers in detail).
 ## Commands 
  rasa train (for training model).
+ 
  rass shell (comand interface provider between user and bot).
+ 
  rasa shell --debug.
+ 
  rasa x (UI interface).
+ 
  rasa train nlu(training nlu.md file).
