@@ -1,5 +1,5 @@
 # rasa_nlu
-created a basic chatbot in rasa nlu for covid 19 with faq and search cases by state ,district or iso state name
+created a basic chatbot in rasa nlu for covid 19 with **FAQ** and search cases by **State,District or ISO State Name**
 # About rasa 
 
 rasa is open source conversational AI Bot with Natural Langauge Understaning
