@@ -11,6 +11,8 @@ from typing import Any, Text, Dict, List
 from app import cases   
 from app import statewise
 from graph import graphics
+from app import statewise_full
+import app
 from SendEmail import sendingemailuser
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -41,8 +43,9 @@ class ActionState(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             slot_iso_state=str(tracker.get_slot("iso_state"))
+            print(slot_iso_state)
             temp=statewise(slot_iso_state)
-            dispatcher.utter_message(f"Total cases in your {slot_iso_state} is around {temp}")
+            dispatcher.utter_message(f"In your {slot_iso_state} confirmed cases is around {temp[0]},Total recoverd {temp[1]},and total deaths {temp[2]}")
             return []
     
 class EmailSend(Action):
@@ -53,8 +56,8 @@ class EmailSend(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             slot_email=str(tracker.get_slot("email_id"))
-            slot_state=str(tracker.get_slot("user_state"))
-            temp=sendingemailuser(slot_email,slot_state)
+            #slot_state=str(tracker.get_slot("user_state"))
+            temp=sendingemailuser(slot_email)
             dispatcher.utter_message(f"Email Has Been Sent to {slot_email} read Further Details")
             return []
         
@@ -79,6 +82,23 @@ class NameAction(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             slot_name=str(tracker.get_slot("NAME"))
-            dispatcher.utter_message(f"Hey {slot_name}  Do you want more about Corna Virus in Your Place!!example:--im leaving in statename and my district is !")
+            prediction = tracker.latest_message
+            print(prediction)
+            name=prediction['entities'][0]['value']
+            print(name)
+            name_entity=next(tracker.get_latest_entity_values("NAME"), None)
+            dispatcher.utter_message(f"Hey {name}  Do you want more about Corna Virus in Your Place!!example:--im leaving in statename and my district is !")
             return []
-        
+      
+class ActionStatefull(Action):
+    def name(self) -> Text:
+        return "action_cases_in_state"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            slot_full_state=str(tracker.get_slot("user_state"))
+            slot_full_state=slot_full_state.capitalize()
+            temp=statewise_full(slot_full_state)
+            dispatcher.utter_message(f"In your {slot_full_state} confirmed cases is around {temp[0]},Total recoverd {temp[1]},and total deaths {temp[2]}")
+            return []
