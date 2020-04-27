@@ -14,14 +14,13 @@ pip install rasa
 pip install rasa x or use pip install rasa-x -U --extra-index-url https://pypi.rasa.com/simple
 
 ```
-## Path
-After Installtion follow path as.
+## Contributing
+Major Change in Search By iso state of india and rela time API response updated to GOV.Data
 
-nlu.md(for defining intents).
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-stories.md(defining path for user answers ).
+Please make sure to update tests as appropriate.
 
-domain.yml(user answers in detail).
 ## Commands 
  rasa train (for training model).
  
