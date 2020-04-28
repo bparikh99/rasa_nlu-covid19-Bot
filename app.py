@@ -12,8 +12,10 @@ def cases(state,district):
             for j in range(len(lst)):
                 if(lst[j]['district']==district):
                     ans=lst[j]['confirmed']
+                    ans1=lst[j]['deceased']
+                    ans2=lst[j]['recovered']
                     #print(ans)
-                    return ans
+                    return ans,ans1,ans2
 def statewise(user_state):
     url = "https://covid19india.p.rapidapi.com/getStateData"+'/'+user_state
 
@@ -32,20 +34,14 @@ def statewise(user_state):
 
     return r[130:134],r[151:154],r[168:171]
 
-
-#     return data_df.loc['confirmed'][2],data_df.loc['deaths'][2],data_df.loc['recovered'][2]
-# #cases('Kerala','Kollam')
-# def state_data():
-
-#     lst=pd.read_html('https://www.mohfw.gov.in/')
-#     dfs=lst[0]
-#     dfs.drop(columns=['S. No.'],inplace=True)
-#     dfs=dfs.rename(columns={'Name of State / UT':'State','Total Confirmed cases (Including 76 foreign Nationals)':'Cases',
-#                          'Cured/Discharged/Migrated':'Cured','Death':'Death'})
-#     dfs.replace("Nagaland#","Nagaland",inplace=True)
-#     dfs.drop(index=[33,34,35],inplace=True)
-#     data=dfs[dfs['Cases'].astype(str).astype(int) > 300]
-#     return data
+def helpline(user_state):
+    dfs=pd.read_html("https://www.indiatvnews.com/coronavirus/helpline-numbers")
+    df=dfs[0]
+    df=df['State Helpline Numbers']
+    x=df.loc[lambda df: df['State/UT']=="Gujarat"]
+    for i in x.values:
+        return i[1]
+#helpline("Gujarat")
 
 def statewise_full(user_state):
     dfs=pd.read_html("https://www.mohfw.gov.in/")

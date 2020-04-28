@@ -28,11 +28,14 @@ class ActionHelloWorld(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             slot_state=str(tracker.get_slot("user_state"))
+            print(slot_state)
             slot_state=slot_state.capitalize()
-            slot_district=str(tracker.get_slot('user_district'))
+            slot_district=str(tracker.get_slot("user_district"))
             slot_district=slot_district.capitalize()
+            print(slot_district)
             temp=cases(slot_state,slot_district)
-            dispatcher.utter_message(f"Total cases in your {slot_state} and in  distric {slot_district} is around {temp}")
+            print(temp)
+            dispatcher.utter_message(f"Total cases in your {slot_state} and in  distric {slot_district} confirmed cases is around {temp[0]} death is{temp[1]} ,and recovered cases is around {temp[2]}")
             return []
         
 class ActionState(Action):
@@ -83,11 +86,11 @@ class NameAction(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
             slot_name=str(tracker.get_slot("NAME"))
             prediction = tracker.latest_message
-            print(prediction)
-            name=prediction['entities'][0]['value']
-            print(name)
-            name_entity=next(tracker.get_latest_entity_values("NAME"), None)
-            dispatcher.utter_message(f"Hey {name}  Do you want more about Corna Virus in Your Place!!example:--im leaving in statename and my district is !")
+            #print(prediction)
+            #name=prediction['entities'][0]['value']
+            #print(name)
+            name_entity=next(tracker.get_latest_entity_values("NAME"), "Someone")
+            dispatcher.utter_message(f"Hey {name_entity}  Do you want more about Corna Virus in Your Place!!example:--im leaving in statename and my district is !")
             return []
       
 class ActionStatefull(Action):
@@ -102,3 +105,16 @@ class ActionStatefull(Action):
             temp=statewise_full(slot_full_state)
             dispatcher.utter_message(f"In your {slot_full_state} confirmed cases is around {temp[0]},Total recoverd {temp[1]},and total deaths {temp[2]}")
             return []
+class ActionHelpline(Action):
+    def name(self) -> Text:
+        return "action_helpline"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            slot_full_state=str(tracker.get_slot("user_state"))
+            slot_full_state=slot_full_state.capitalize()
+            temp=helpline(slot_full_state)
+            dispatcher.utter_message(f" {slot_full_state} Helpline Number is {temp}")
+            return []
+        
