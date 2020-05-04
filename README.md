@@ -21,7 +21,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-## Commands 
+## Commands
+```bash
  rasa train (for training model).
  
  rass shell (comand interface provider between user and bot).
@@ -31,6 +32,7 @@ Please make sure to update tests as appropriate.
  rasa x (UI interface).
  
  rasa train nlu(training nlu.md file).
+```
 
 ## Pictures
 ![1](https://user-images.githubusercontent.com/59947941/80528682-f3c2c280-89b3-11ea-854a-6d7e114f2cf7.PNG)             ![2](https://user-images.githubusercontent.com/59947941/80528778-1a80f900-89b4-11ea-9aac-9e0a1df56cff.PNG)
