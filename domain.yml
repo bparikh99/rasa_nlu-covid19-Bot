@@ -1,0 +1,149 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- corona_intro
+- symptoms
+- my_name
+- state
+- how_many_cases
+- covid
+- district
+- location_provider
+- dont_know_anything
+- my_email
+- my_number
+- graph
+- fine
+- dont_provide
+- full_statewise
+- helpline_number
+- video
+- world_map
+entities:
+- NAME
+- user_state
+- user_district
+- iso_state
+- email_id
+- mob_no
+slots:
+  NAME:
+    type: text
+  email_id:
+    type: text
+  iso_state:
+    type: text
+  mob_no:
+    type: text
+  user_district:
+    type: text
+  user_state:
+    type: text
+responses:
+  utter_greet:
+  - text: Hey! How are you?Im your Corona Informative Bot Ask about Corona-Virus
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://python.rs/pylogo.png
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: Great to hear that, I am your bot, powered by Rasa and developed by bparikh99
+      and my name is covid_19_bot.
+  utter_corona_intro:
+  - text: "Corona viruses are a large family of viruses which may cause ,illness
+      inanimals or humans. In humans, several coronaviruses are knownto cause respiratoryinfections
+      ranging from the common cold to moresevere diseases such as MiddleEast Respiratory
+      Syndrome (MERS)and Severe Acute Respiratory Syndrome (SARS).The most recentlydiscovered
+      coronavirus causes coronavirus disease COVID-19."
+  utter_covid:
+  - text: "COVID-19 is the infectious disease caused by the most recently discoveredcoronavirus.
+      This new virus and disease were unknown before the outbreak beganin Wuhan, China,
+      in December 2019."
+  utter_ans_sym:
+  - text: "The most common symptoms of COVID-19 are fever, tiredness, and dry
+      cough. Some patients may have aches and pains, nasal congestion, runny nose,
+      sore throat or diarrhea. These symptoms are usually mild and begin gradually.Some
+      people become infected but don’t develop any symptoms and dont feel unwell.Most
+      people (about 80%) recover from the disease without needing special treatment.Around
+      1 out of every 6 people who gets COVID-19 becomes seriously ill and develops
+      difficulty breathing."
+  utter_name:
+  - text: text:"May I know your name?"
+  utter_your_name:
+  - text: Hey {NAME} Do you want more about Corna Virus in Your Place!!example:--im
+      leaving in statename and my district is !
+  utter_location_enter:
+  - text: Please Provide Location For better Result
+  utter_details_inlink:
+  - text: Please click this link [iso code of indian states](http://india.code2care.org/india-states-iso-codes/)  use
+      letters after IN
+  utter_email:
+  - text: please Provide your email_id
+  utter_mobile:
+  - text: please Provide your mobilenumber
+  utter_information:
+  - text: Thank You for Providing Information Will Provid FAQ and Valuable information
+      in your mail
+  utter_graph:
+  - text: Please Select Category
+    buttons:
+    - title: World Map
+      payload: /world_map
+    - title: India Map
+      payload: /graph
+
+  utter_did_that_help1:
+  - text: Did that help you?
+  utter_provide_info:
+  - text: text:"Please Provide your email id for more information it will be helpfull
+      to you"
+  utter_video_src:
+  - text: "Check this video"
+    attachment: { "type":"video", "payload":{ "src": "https://www.youtube.com/embed/v-852f1PXBo" } }
+  utter_covid_map:
+  - text: To view country wise COVID-19 cases please visit this [website] (https://8sni6.csb.app/)
+  utter_india_map:
+  - text: To view country wise COVID-19 cases please visit this [website] (https://www.accuweather.com/en/in/national/covid-19)  
+actions:
+- utter_corona_intro
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_covid
+- utter_ans_sym
+- utter_name
+- utter_your_name
+- action_total_cases
+- action_total_cases_in_state
+- action_email_sent
+- utter_location_enter
+- utter_details_inlink
+- utter_email
+- utter_information
+- utter_mobile
+- utter_graph
+- uttter_video_src
+- action_graphics_1
+- utter_did_that_help1
+- action_your_name
+- utter_provide_info
+- action_cases_in_state
+- action_helpline
+- utter_covid_map
+- utter_india_map
